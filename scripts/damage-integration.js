@@ -430,6 +430,6 @@ export class DamageIntegration {
     static getCardSuit(card) {
         // Try to get suit from card data, flags, or name
         return card.getFlag('fu-ace-cards', 'phantomSuit') || card.suit || card.getFlag('fu-ace-cards', 'suit') || 
-               card.name.toLowerCase().match(/(clubs?|diamonds?|hearts?|spades?)/)?.[0] || '';
+               card.name.toLowerCase().match(/(clubs?|diamonds?|hearts?|spades?)/)?.[0] || card.getFlag(MODULE_ID, 'phantomSuit') || '';
     }
 }

@@ -17,15 +17,15 @@ export const SET_NAMES = {
 // Parse card value from card data
 export function getCardValue(card) {
   // Try to get value from card data, flags, or name
-  return card.value || card.getFlag('fu-ace-cards', 'value') || 
-         parseInt(card.name.match(/\d+/)?.[0]) || 0;
+  return card.value || card.getFlag(MODULE_ID, 'value') || 
+         parseInt(card.name.match(/\d+/)?.[0]) || card.getFlag(MODULE_ID, 'phantomValue') || 0;
 }
 
 // Parse card suit from card data
 function getCardSuit(card) {
   // Try to get suit from card data, flags, or name
   return card.suit || card.getFlag('fu-ace-cards', 'suit') || 
-         card.name.toLowerCase().match(/(clubs?|diamonds?|hearts?|spades?)/)?.[0] || '';
+         card.name.toLowerCase().match(/(clubs?|diamonds?|hearts?|spades?)/)?.[0] || card.getFlag(MODULE_ID, 'phantomSuit') || '';
 }
 
 // Check if card is a joker
