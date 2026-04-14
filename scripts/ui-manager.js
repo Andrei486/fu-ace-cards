@@ -510,22 +510,12 @@ for (const c of cards) {
     // Look for direct Mulligan skill first
     const mulliganSkill = actor.items.find(i => i.name === "Mulligan" && i.type === "skill");
     
-    // Then check for Magic Cards level 5+ as fallback
-    const magicCardsSkill = actor.items.find(i => 
-      i.name === "Magic Cards" && 
-      i.type === "skill" && 
-      i.system.level.value >= 5
-    );
-    
     // Determine skill level
     let skillLevel = 0;
     
     if (mulliganSkill) {
       // Use direct Mulligan level
       skillLevel = mulliganSkill.system.level.value;
-    } else if (magicCardsSkill) {
-      // Magic Cards level 5+ grants Mulligan level 1
-      skillLevel = 1;
     } else {
       ui.notifications.warn("You don't have the Mulligan skill");
       return false;
@@ -535,14 +525,16 @@ for (const c of cards) {
     if (isNaN(skillLevel) || skillLevel <= 0) {
       skillLevel = 1; // Fallback to 1 if we couldn't get a valid number
     }
+
+    const discardLimit = skillLevel + 1;
     
     // Set up the Mulligan state
     await game.user.setFlag(MODULE_ID, 'mulliganActive', true);
-    await game.user.setFlag(MODULE_ID, 'discardLimit', skillLevel);
+    await game.user.setFlag(MODULE_ID, 'discardLimit', discardLimit);
     await game.user.setFlag(MODULE_ID, 'discardCount', 0);
     
     // Show notification
-    ui.notifications.info(`Mulligan activated: You may discard up to ${skillLevel} cards and draw that many`);
+    ui.notifications.info(`Mulligan activated: You may discard up to ${discardLimit} cards and draw that many`);
     
     // Re-render hand to show discard buttons
     this.renderHand();
