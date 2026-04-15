@@ -14,7 +14,7 @@ A Foundry VTT module that provides card management for the [**Ace of Cards**](ht
 
 ### Installation
 Paste this url in the Manifest URL of Foundry's Install Module section:
-``https://raw.githubusercontent.com/mordachai/fu-ace-cards/refs/heads/main/module.json``
+``https://raw.githubusercontent.com/Andrei486/fu-ace-cards/refs/heads/main/module.json``
 _______________________________
 ## Setup
 ### 1. Choose a deck for each player with Magic Cards
