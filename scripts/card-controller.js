@@ -812,7 +812,7 @@ static async createSetActivationMessage(setData, playerId, mpCost) {
 static getCardSuit(card) {
   // Try to get suit from card data, flags, or name
   return card.suit || card.getFlag(MODULE_ID, 'suit') || 
-         card.name.toLowerCase().match(/(clubs?|diamonds?|hearts?|spades?)/)?.[0] || '';
+         card.name.toLowerCase().match(/(clubs?|diamonds?|hearts?|spades?)/)?.[0] || card.getFlag(MODULE_ID, 'phantomSuit') || '';
 }
 
 // Helper method to get set description
