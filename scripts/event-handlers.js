@@ -945,6 +945,14 @@ export class EventHandlers {
           }
         }
 
+        const damageDisplay = html.querySelector('#fu-ace-cards-dmg');
+        if (damageDisplay) {
+          const span = damageDisplay.querySelector('span');
+          if (span) {
+            span.innerHTML = span.innerHTML.replace("untyped", damageType);
+          }
+        }
+
         SocketManager.emitCardSelection({
           messageId: html.closest('.message').dataset.messageId,
           cardId: cardElement.dataset.cardId,
