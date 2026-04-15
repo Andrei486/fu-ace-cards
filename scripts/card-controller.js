@@ -837,7 +837,7 @@ static getSetEffectDescription(setData) {
     },
     'triple-support': {
       base: '3 cards of the same value',
-      effect: 'You and every ally present on the scene regain an amount of Hit Points and Mind Points equal to 【the total value of the resolved cards, multiplied by 3】.'
+      effect: 'You and every ally you can see recover an amount of Hit Points equal to【the total value of the resolved cards, multiplied by 3】.'
     },
     'double-trouble': {
       base: '2 cards of the same value + 2 cards of the same value',
