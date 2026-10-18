@@ -117,7 +117,11 @@
   </div>
   <div class="fu-tags flexrow gap-5" id="fu-ace-cards-dmg">
     <span>
-      {{#if damageType}} @DMG[{{damageValue}} {{damageType}}] {{else}} @DMG[{{damageValue}} untyped] {{/if}}
+      {{#if isDoubleTrouble }}
+        {{#if damageType}} @DMG[{{damageValue}}+&amp;step(0,10,20) {{damageType}}] {{else}} @DMG[{{damageValue}}+&amp;step(0,10,20) untyped] {{/if}}
+      {{else}}
+        {{#if damageType}} @DMG[{{damageValue}}+&amp;step(0,5,10) {{damageType}}] {{else}} @DMG[{{damageValue}}+&amp;step(0,5,10) untyped] {{/if}}
+      {{/if}}
     </span>
   </div>
   {{/if}}
@@ -171,7 +175,7 @@
     </div>
   </div>
   <div class="fu-tags flexrow gap-5">
-    @GAIN[{{healingData.value}} hp]
+    @GAIN[{{healingData.value}}+&amp;step(0,5,10) hp]
   </div>
 
   <div class="fu-tags flexrow gap-5">
